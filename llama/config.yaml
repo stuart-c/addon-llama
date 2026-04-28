@@ -1,0 +1,16 @@
+name: "ik_llama.cpp Server"
+description: "High-performance llama.cpp fork for Pi 5"
+version: "1.0.0"
+slug: "ik_llama_server"
+arch:
+  - aarch64
+ports:
+  8080/tcp: 8080
+options:
+  model_url: "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/resolve/main/Qwen3.5-0.8B-IQ4_NL.gguf"
+  ctx_size: 4096
+  threads: 4
+schema:
+  model_url: str
+  ctx_size: int
+  threads: int
