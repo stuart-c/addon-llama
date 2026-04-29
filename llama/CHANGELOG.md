@@ -1,3 +1,12 @@
+## [0.1.6] - 2026-04-29
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- fix: Resolve missing libmtmd.so and improve startup logging @stuart-c (#8)
+
+
 ## [0.1.5] - 2026-04-29
 
 ## Changes
