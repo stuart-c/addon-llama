@@ -1,3 +1,12 @@
+## [0.1.5] - 2026-04-29
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- fix: Shebang @stuart-c (#7)
+
+
 ## [0.1.4] - 2026-04-29
 
 ## Changes
