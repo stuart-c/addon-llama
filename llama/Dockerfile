@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     cmake \
     git \
     curl \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -25,6 +26,8 @@ FROM ${BUILD_FROM}
 
 RUN apt-get update && apt-get install -y \
     curl \
+    ca-certificates \
+    iputils-ping \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
