@@ -1,3 +1,12 @@
+## [0.1.1] - 2026-04-29
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- fix: Config fix @stuart-c (#3)
+
+
 ## [0.1.0] - 2026-04-29
 
 ## Changes
