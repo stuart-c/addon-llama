@@ -1,6 +1,6 @@
 name: "ik_llama.cpp Server"
 description: "High-performance llama.cpp fork for Pi 5"
-version: "1.0.0"
+version: "0.1.0"
 slug: "ik_llama_server"
 arch:
   - aarch64
