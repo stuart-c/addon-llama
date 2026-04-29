@@ -59,7 +59,7 @@ if ! [ -f "$LOCAL_MODEL_PATH" ]; then
     bashio::exit.nok
 fi
 
-/app/build/bin/llama-server \
+exec /app/llama-server \
   --model "$LOCAL_MODEL_PATH" \
   --host 0.0.0.0 \
   --port 8080 \
