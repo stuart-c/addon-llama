@@ -18,7 +18,7 @@ RUN git clone https://github.com/ikawrakow/ik_llama.cpp.git . \
     && sed -i '1i #include <cstdint>\n#define GGML_COMMON_DECL_C' ggml/src/iqk/iqk_common.h \
     && sed -i '1i #include <algorithm>\n#ifndef MIN\n#define MIN(a, b) ((a) < (b) ? (a) : (b))\n#endif\n#ifndef MAX\n#define MAX(a, b) ((a) > (b) ? (a) : (b))\n#endif' ggml/src/iqk/iqk_cpu_ops.cpp \
     && sed -i 's/defined __ARM_FEATURE_DOTPROD/defined __ARM_FEATURE_DOTPROD || defined __ARM_NEON/' ggml/src/iqk/iqk_config.h \
-    && cmake -B build -DGGML_NATIVE=OFF -DGGML_ARCH_FLAGS="-march=armv8.2-a+fp16+dotprod" \
+    && cmake -B build -DGGML_NATIVE=OFF -DGGML_ARCH_FLAGS="-march=armv8.2-a+fp16+dotprod" -DBUILD_SHARED_LIBS=ON \
     && cmake --build build --config Release -j$(nproc) --target llama-server
 
 # Final stage
@@ -32,6 +32,14 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /app
 COPY --from=builder /app/build/bin/llama-server /app/llama-server
+
+# Copy shared libraries (including libmtmd.so) and update linker cache
+RUN mkdir -p /usr/local/lib
+COPY --from=builder /app/build/ /tmp/build/
+RUN find /tmp/build -name "*.so*" -exec cp -P {} /usr/local/lib/ \; \
+    && ldconfig \
+    && rm -rf /tmp/build
+
 COPY run.sh /app/run.sh
 RUN chmod +x /app/run.sh
 

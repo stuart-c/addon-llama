@@ -1,4 +1,4 @@
-#!/usr/bin/with-contenv bashio
+#!/usr/bin/env bashio
 
 set -x
 
@@ -16,13 +16,13 @@ bashio::log.info "Starting ik_llama.cpp server..."
 bashio::log.info "Model URL: $MODEL_URL"
 bashio::log.info "Local Path: $LOCAL_MODEL_PATH"
 
-# Function to get remote ETag with improved logging
+# Function to get remote ETag with improved logging and redirect support
 get_remote_etag() {
     local response
     local http_code
     
     bashio::log.debug "Fetching headers from $MODEL_URL"
-    # Capture headers and HTTP status code
+    # Capture headers and HTTP status code, follow redirects (-L)
     response=$(curl -sI -L -w "%{http_code}" "$MODEL_URL")
     http_code=$(echo "$response" | tail -n 1)
     
@@ -80,6 +80,9 @@ if ! [ -f "$LOCAL_MODEL_PATH" ]; then
 fi
 
 bashio::log.info "Starting llama-server..."
+
+# Ensure /usr/local/lib is in LD_LIBRARY_PATH just in case
+export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
 
 exec /app/llama-server \
   --model "$LOCAL_MODEL_PATH" \
