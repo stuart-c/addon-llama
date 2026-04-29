@@ -1,5 +1,7 @@
 #!/usr/bin/with-contenv bashio
 
+set -x
+
 # Retrieve configuration using bashio
 MODEL_URL=$(bashio::config 'model_url')
 CTX_SIZE=$(bashio::config 'ctx_size')
@@ -10,7 +12,6 @@ MODEL_NAME=$(basename "$MODEL_URL")
 LOCAL_MODEL_PATH="/data/$MODEL_NAME"
 LOCAL_ETAG_FILE="/data/$MODEL_NAME.etag"
 
-bashio::log.info "Starting ik_llama.cpp server..."
 bashio::log.info "Model URL: $MODEL_URL"
 bashio::log.info "Local Path: $LOCAL_MODEL_PATH"
 
@@ -58,6 +59,8 @@ if ! [ -f "$LOCAL_MODEL_PATH" ]; then
     bashio::log.error "Model file missing after update attempt!"
     bashio::exit.nok
 fi
+
+bashio::log.info "Starting ik_llama.cpp server..."
 
 exec /app/llama-server \
   --model "$LOCAL_MODEL_PATH" \
