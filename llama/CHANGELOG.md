@@ -1,3 +1,12 @@
+## [0.1.4] - 2026-04-29
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- fix: Resolve PID 1 error by updating shebang and adding healthcheck @stuart-c (#6)
+
+
 ## [0.1.3] - 2026-04-29
 
 ## Changes
