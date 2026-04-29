@@ -1,7 +1,9 @@
 name: "ik_llama.cpp Server"
-description: "High-performance llama.cpp fork for Pi 5"
 version: "0.1.0"
 slug: "ik_llama_server"
+image: "ghcr.io/stuart-c/addon-llama"
+description: "High-performance llama.cpp fork for Pi 5"
+url: https://github.com/stuart-c/addon-llama
 arch:
   - aarch64
 ports:
