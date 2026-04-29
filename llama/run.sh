@@ -7,6 +7,11 @@ MODEL_URL=$(bashio::config 'model_url')
 CTX_SIZE=$(bashio::config 'ctx_size')
 THREADS=$(bashio::config 'threads')
 
+if [ -z "$MODEL_URL" ] || [ -z "$CTX_SIZE" ] || [ -z "$THREADS" ]; then
+    bashio::log.error "Missing required configuration: model_url, ctx_size, or threads"
+    bashio::exit.nok
+fi
+
 # Determine filename and paths
 MODEL_NAME=$(basename "$MODEL_URL")
 LOCAL_MODEL_PATH="/data/$MODEL_NAME"
@@ -82,7 +87,7 @@ fi
 bashio::log.info "Starting llama-server..."
 
 # Ensure /usr/local/lib is in LD_LIBRARY_PATH just in case
-export LD_LIBRARY_PATH="/usr/local/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH:-}"
 
 exec /app/llama-server \
   --model "$LOCAL_MODEL_PATH" \
