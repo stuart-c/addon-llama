@@ -1,3 +1,12 @@
+## [0.1.9] - 2026-04-30
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- fix: install libgomp1 to resolve missing shared library error @stuart-c (#13)
+
+
 ## [0.1.8] - 2026-04-30
 
 ## Changes
