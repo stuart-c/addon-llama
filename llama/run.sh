@@ -86,9 +86,6 @@ fi
 
 bashio::log.info "Starting llama-server..."
 
-# Ensure /usr/local/lib is in LD_LIBRARY_PATH just in case
-export LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH:-}"
-
 exec /app/llama-server \
   --model "$LOCAL_MODEL_PATH" \
   --host 0.0.0.0 \
