@@ -1,7 +1,5 @@
 #!/usr/bin/with-contenv bashio
 
-set -x
-
 # Retrieve configuration using bashio
 MODEL_URL=$(bashio::config 'model_url')
 CTX_SIZE=$(bashio::config 'ctx_size')
