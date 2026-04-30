@@ -2,6 +2,9 @@
 
 set -x
 
+# Ensure LD_LIBRARY_PATH is defined to avoid unbound variable errors with set -u
+export LD_LIBRARY_PATH="${LD_LIBRARY_PATH:-}"
+
 # Retrieve configuration using bashio
 MODEL_URL=$(bashio::config 'model_url')
 CTX_SIZE=$(bashio::config 'ctx_size')
@@ -87,7 +90,7 @@ fi
 bashio::log.info "Starting llama-server..."
 
 # Ensure /usr/local/lib is in LD_LIBRARY_PATH just in case
-export LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH:-}"
+export LD_LIBRARY_PATH="/usr/local/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
 
 exec /app/llama-server \
   --model "$LOCAL_MODEL_PATH" \
