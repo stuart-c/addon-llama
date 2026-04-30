@@ -1,5 +1,5 @@
 name: "ik_llama.cpp Server"
-version: "0.1.9"
+version: "0.1.10"
 slug: "ik_llama_server"
 image: "ghcr.io/stuart-c/addon-llama"
 description: "High-performance llama.cpp fork for Pi 5"

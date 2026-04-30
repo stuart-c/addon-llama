@@ -1,3 +1,12 @@
+## [0.1.10] - 2026-04-30
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- fix: Reduce logging @stuart-c (#14)
+
+
 ## [0.1.9] - 2026-04-30
 
 ## Changes
