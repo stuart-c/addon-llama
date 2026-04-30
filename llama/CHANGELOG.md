@@ -1,3 +1,12 @@
+## [0.1.8] - 2026-04-30
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- fix: Variable error @stuart-c (#12)
+
+
 ## [0.1.7] - 2026-04-29
 
 ## Changes
