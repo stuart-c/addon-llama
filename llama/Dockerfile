@@ -44,7 +44,4 @@ RUN find /tmp/build -name "*.so*" -exec cp -P {} /usr/local/lib/ \; \
 COPY run.sh /app/run.sh
 RUN chmod +x /app/run.sh
 
-HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
-  CMD curl -f http://localhost:8080/health || exit 1
-
 CMD [ "/app/run.sh" ]
