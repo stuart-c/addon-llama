@@ -4,6 +4,7 @@
 MODEL_URL=$(bashio::config 'model_url')
 CTX_SIZE=$(bashio::config 'ctx_size')
 THREADS=$(bashio::config 'threads')
+ADDITIONAL_ARGS=$(bashio::config 'additional_args')
 
 if [ -z "$MODEL_URL" ] || [ -z "$CTX_SIZE" ] || [ -z "$THREADS" ]; then
     bashio::log.error "Missing required configuration: model_url, ctx_size, or threads"
@@ -89,4 +90,5 @@ exec /app/llama-server \
   --host 0.0.0.0 \
   --port 8080 \
   --ctx-size "$CTX_SIZE" \
-  --threads "$THREADS"
+  --threads "$THREADS" \
+  $ADDITIONAL_ARGS
