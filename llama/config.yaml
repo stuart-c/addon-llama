@@ -13,7 +13,9 @@ options:
   model_url: "https://huggingface.co/unsloth/Qwen3.5-0.8B-GGUF/resolve/main/Qwen3.5-0.8B-IQ4_NL.gguf"
   ctx_size: 4096
   threads: 4
+  additional_args: ""
 schema:
   model_url: str
   ctx_size: int
   threads: int
+  additional_args: str?
