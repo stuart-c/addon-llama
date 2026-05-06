@@ -1,3 +1,12 @@
+## [0.2.0] - 2026-05-06
+
+## Changes
+
+## 🚀 Features
+
+- feat: add additional\_args configuration option @stuart-c (#16)
+
+
 ## [0.1.10] - 2026-04-30
 
 ## Changes
